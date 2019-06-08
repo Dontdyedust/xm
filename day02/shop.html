@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A商城</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		a {
+			text-decoration: none;
+		}
+
+		table {
+			border:1px solid #222;
+			width:100%;
+			border-collapse: collapse;
+		}
+
+		tr,td,th {
+			border:1px solid #222;
+		}
+
+		tr {
+			height: 40px;
+		}
+
+		tr:first-child {
+			height: 20px;
+		}
+		td {
+			text-align: center;
+		}
+		td img {
+			height: 50px;
+		}
+		td button {
+			width: 15px;
+		}
+		#info {
+			font-size: 12px;
+			width: 500px;
+			height: 50px;
+			border:2px solid #222;
+			margin:30px auto;
+			text-align: center;
+			background: #222;
+		}
+
+		#info a {
+			line-height: 50px;
+			margin:5px;
+			color:#fff;
+		}
+		#info a:hover {
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>商品展示</th>
+				<th>价格</th>
+				<th>店铺</th>
+				<th>购买</th>
+			</tr>
+		</thead>
+
+		<tbody id="tt">
+		
+		</tbody>
+	</table>
+
+	<div id="info">
+		<a href="javascript:;">结账</a>
+	</div>   
+        </body>
+        <script src="goods.json"></script>
+        <script src="shop.js"></script>
+	<script>
+         var a=new Shoptabl();
+		 a.getData();
+		 a.setGoodsCookie();
+		 a.cartBuy();
+	</script>
+</html>

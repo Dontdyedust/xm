@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/rejister.css"/>
+</head>
+<body>
+    <header>
+        <div class="margin">
+         <div class="star">
+             <span>欢迎光临莎莎网！</span>
+             <p><a href="login.html">登录</a>或<a href="rejister.html">免费注册</a></p>
+         </div>
+         
+         <ul>
+            <li><a href="">
+                <i class="account1"></i>
+                我的账户
+                <i class="account2"></i>
+               </a>
+               <div class="account3">
+               <dd><a href="##">我的订单</a></dd>
+               <dd><a href="##">我的积分</a></dd> 
+               <dd><a href="##">我的优惠券</a></dd> 
+               <dd><a href="##">我的收藏</a></dd> 
+               <dd><a href="##">我的评价</a></dd>  
+               </div> 
+            </li>
+             <li>
+                 <a href="##">
+                    <i></i>
+                    我的购物车
+                 </a>
+                 <div class="car">
+                     <p>购物车中还没有商品，</p>
+                     <span>快去挑选心爱的商品吧</span>      
+                 </div>
+            </li>
+
+            <li><a href="">
+                    <i></i>
+                    我的收藏
+             </a>
+            </li>
+
+             <li><a href="">我的站内信</a></li>
+
+             <li><a href="">积分中心</a></li>
+
+             <li><a href="">Global site</a></li>
+             
+            <li><a href="">关注我们</a>
+                <a href="##" class="w1"><i><img src="imges/tb4.gif"/></i>
+                <div class="weibo"><img src="imges/weibo.jpg"/>
+                </div>
+                </a>
+                <a href="##" class="w2"><em><img src="imges/tb5.gif"/></em>
+                <div class="weixin"><img src="imges/weixin.jpg"/>
+                </div>
+                </a>
+            </li>   
+         </ul>
+        </div> 
+ </header>
+ <section>
+        <div class="margin">
+            <div id="logo">
+                <a href="sasa1.html"><img src="imges/sasalogo.png" /></a>
+            </div>
+            <div id="page">
+                <div class="lefttu">
+                    <i><img src="imges/zhuce.jpg" /></i>
+                </div>
+                <div class="login-a">
+                    <div class="login-1">
+                        <h3>用户注册</h3>
+                        <p>已有莎莎账号？<a href="login.html">立即登录</a></p>
+                    </div>
+                    <form>
+                        <input class="photo" type="text" value="" placeholder="邮箱/手机"/><span><p></p></span>
+                        <br/>
+                        <input class="pswd" type="password" value="" placeholder="填写密码"/><span><p></p></span>
+                        <br/>
+                        <input class="anew" type="password" value="" placeholder="再次填写密码"/><span><p></p></span>
+                        <br/>
+                        <span class="span-1">
+                            <input class="yanz" type="text" value="" placeholder="填写图片验证码"/>
+                            <a><img src="imges/yanz.png" /></a>   
+                            <p>看不清 换一张</p>
+                        </span>
+
+                        <span class="span-2">
+                            <input class="dian1" type="checkbox" />
+                            <label for="dian1">你以阅读及接受<a>使用条款</a>及<a>隐私政策</a></label>
+                            <br/>
+                            <input class="dian2" type="checkbox" />
+                            <label for="dian2">我不同意莎莎使用我的个人资料作直接促销</label>
+                        </span>
+                        <input class="deng" type="button" value="注册" />
+                        <span class="masg"></span>
+                    </form>
+                    </div>
+                </div>
+            </div>
+ </section>
+</body>
+<script>
+    class Rejister{
+        constructor(){
+        this.photo = document.querySelector(".photo")
+        this.pswd = document.querySelector(".pswd")
+        this.anew = document.querySelector(".anew")
+        this.deng = document.querySelector(".deng")
+        this.masg = document.querySelector(".masg")
+        this.init()
+        }
+        init(){
+            var userOnOff = false; 
+            var anewOnOff = false;
+            var telOnOff = false;
+            var that = this;
+            this.photo.onblur = function(){
+                var reg = /^1[3-9]\d{9}|\w{1,18}@[0-9a-zA-Z]{1,10}\.[a-zA-Z]{2,4}$/;
+                if (reg.test(this.value)) {
+                this.nextElementSibling.innerHTML = ""
+                userOnOff = true
+            } else {
+                this.nextElementSibling.innerHTML = "不符合"
+                userOnOff = false
+            }
+            }
+           this.pswd.onblur = function () {
+            var reg = /^\w{6,20}$/;
+            if (reg.test(this.value)) {
+                this.nextElementSibling.innerHTML = ""
+                userOnOff = true
+            } else {
+                this.nextElementSibling.innerHTML = "不符合"
+                userOnOff = false
+            }
+        }
+        if (that.anew.value != "") {
+            if (that.anew.value == this.value) {
+               that.anew.nextElementSibling.innerHTML = ""
+                anewOnOff = true
+            } else {
+                that.anew.nextElementSibling.innerHTML = "不一致"
+                anewOnOff = false
+            }
+        }
+
+        this.anew.onblur = function () {
+            if (this.value ===that.pswd.value) {
+                this.nextElementSibling.innerHTML = ""
+                anewOnOff = true
+            } else {
+                this.nextElementSibling.innerHTML = "不一致"
+                anewOnOff = false
+            }
+        }
+        this.deng.onclick = function () {
+            if (userOnOff && anewOnOff) {
+                   that.cok()
+            } else {
+                that.masg.innerHTML = "注册失败"
+            }
+          }
+    
+        }
+        cok(){
+        var that = this;
+            that.getUserMsg()
+    }
+    getUserMsg(){
+        this.usermsg = localStorage.getItem("usermsg");
+        this.setUserMsg()
+    }
+    setUserMsg(){
+          if(this.usermsg == null){
+              this.usermsg = [{
+                  user:this.photo.value,
+                  pass:this.pswd.value,
+                  onoff:0
+              }]
+              this.masg.innerHTML =""; 
+          }else{
+              this.usermsg = JSON.parse(localStorage.getItem("usermsg"));
+              for(var i=0; i<this.usermsg.length;i++){
+                   if(this.usermsg[i].user == this.photo.value){
+                       this.masg.innerHTML = "重名";
+                       return;
+                   }
+              }
+              this.masg.innerHTML = "注册成功,即将跳转到登录页面";
+              this.usermsg.push({
+                  user:this.photo.value,
+                  pass:this.pswd.value,
+                  onoff:0
+              })
+          }
+          localStorage.setItem("usermsg",JSON.stringify(this.usermsg))
+          setTimeout(()=>{
+             location.href = "login.html";
+          },3000)
+    }
+    }   
+  
+new Rejister();
+
+
+
+</script>
+</html> 

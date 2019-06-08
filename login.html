@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/public.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+</head>
+<body>
+    <header>
+        <div class="margin">
+         <div class="star">
+             <span>欢迎光临莎莎网！</span>
+             <p><a href="login.html">登录</a>或<a href="rejister.html">免费注册</a></p>
+         </div>
+         
+         <ul>
+            <li><a href="">
+                <i class="account1"></i>
+                我的账户
+                <i class="account2"></i>
+               </a>
+               <div class="account3">
+               <dd><a href="##">我的订单</a></dd>
+               <dd><a href="##">我的积分</a></dd> 
+               <dd><a href="##">我的优惠券</a></dd> 
+               <dd><a href="##">我的收藏</a></dd> 
+               <dd><a href="##">我的评价</a></dd>  
+               </div> 
+            </li>
+             <li>
+                 <a href="##">
+                    <i></i>
+                    我的购物车
+                 </a>
+                 <div class="car">
+                     <p>购物车中还没有商品，</p>
+                     <span>快去挑选心爱的商品吧</span>      
+                 </div>
+            </li>
+
+            <li><a href="">
+                    <i></i>
+                    我的收藏
+             </a>
+            </li>
+
+             <li><a href="">我的站内信</a></li>
+
+             <li><a href="">积分中心</a></li>
+
+             <li><a href="">Global site</a></li>
+             
+            <li><a href="">关注我们</a>
+                <a href="##" class="w1"><i><img src="imges/tb4.gif"/></i>
+                <div class="weibo"><img src="imges/weibo.jpg"/>
+                </div>
+                </a>
+                <a href="##" class="w2"><em><img src="imges/tb5.gif"/></em>
+                <div class="weixin"><img src="imges/weixin.jpg"/>
+                </div>
+                </a>
+            </li>   
+         </ul>
+        </div> 
+ </header>
+<section>
+        <div class="margin">
+            <div id="logo">
+                <a href="sasa1.html"><img src="imges/sasalogo.png" /></a>
+            </div>
+            <div id="page">
+                <div class="lefttu">
+                    <i><img src="imges/deng.png" /></i>
+                </div>
+                <div class="login-a">
+                    <div class="login-1">
+                        <h3>用户登录</h3>
+                        <p>还没有莎莎账号？<a href="rejister.html">立即注册</a></p>
+                    </div>
+                    <form>
+                        <input class="photo" type="text" value="" placeholder="邮箱/手机"/>
+                        <br/>
+                        <input class="pswd" type="password" value="" placeholder="填写密码"/>
+                        <br/>
+                        <span class="span-1">
+                            <input class="yanz" type="text" value="" placeholder="填写图片验证码"/>
+                            <a><img src="imges/yanz.png" /></a>   
+                            <p>看不清 换一张</p>
+                        </span>
+
+                        <span class="span-2">
+                            <input class="dian" type="checkbox" />
+                            <label for="dian">记住我</label>
+                            <a href="##">忘记密码</a>
+                        </span>
+                        <input class="deng" type="button" value="登录" />
+                        <span class="masg"></span>
+                    </form>
+                    <div class="third">
+                        <p>第三方账户登录</p>
+                        <div class="third-1">
+                            <a href=""><i><img src="imges/login01.jpg" /></i>QQ登录</a>
+                            <a href=""><i><img src="imges/login02.jpg" /></i>微博登录</a>
+                            <a href=""><i><img src="imges/login03.jpg" /></i>支付宝登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+</section>
+</body>
+<script>
+    class Login{
+        constructor(){
+            this.photo = document.querySelector(".photo");
+            this.pswd = document.querySelector(".pswd");
+            this.deng = document.querySelector(".deng");
+            this.masg = document.querySelector(".masg");
+            this.init()
+        }
+        init(){
+            var that = this;
+            this.deng.onclick = function(){
+               that.getUserMsg()
+            }
+        }
+        getUserMsg(){
+            this.usermsg = localStorage.getItem("usermsg") ? JSON.parse(localStorage.getItem("usermsg")) : [];
+            this.check();
+        }
+        check(){     
+            for(var i=0;i<this.usermsg.length;i++){
+                if(this.usermsg[i].user == this.photo.value && this.usermsg[i].pass == this.pswd.value){
+                this.usermsg[i].onoff = 1;
+                localStorage.setItem("usermsg",JSON.stringify(this.usermsg))
+                this.masg.innerHTML = "登录成功，即将跳转到首页";
+                   setTimeout(()=>{
+                       location.href = "sasa1.html";
+                   },3000);
+                   return; 
+                }
+            }
+            this.masg.innerHTML = "账号密码不符，请重新登录"
+        }
+    }
+    new Login();
+</script>
+</html>
